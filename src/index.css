@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-color: #4A90E2; /* Bright Blue */
+  --primary-light-color: #7BB9F0; /* Lighter Blue */
+  --primary-hover-color: #357ABD; /* Darker Blue for hover */
+  --secondary-color: #50E3C2; /* Tealish Green */
+  --secondary-dark-color: #3EAE9E; /* Darker Teal for text */
+  --accent-color: #F5A623; /* Orange */
+  --accent-hover-color: #D88C1B; /* Darker Orange for hover */
+  --background-color: #F8F9FA; /* Very Light Gray */
+  --surface-color: #FFFFFF; /* White */
+  --text-primary-color: #333333; /* Dark Gray for main text */
+  --text-secondary-color: #555555; /* Medium Gray for secondary text */
+  --error-color: #D0021B; /* Red */
+  --success-color: #7ED321; /* Green */
+  --border-color: #E0E0E0; /* Light Gray for borders */
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: var(--text-primary-color);
+  background-color: var(--background-color);
+}
+
+/* Additional global styles if needed */
+.convex-form-container {
+  background-color: var(--surface-color);
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--border-color);
+}
+
+.convex-button {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.375rem;
+  font-weight: 500;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.convex-button:hover {
+  background-color: var(--primary-hover-color);
+}
+
+.convex-input {
+  border: 1px solid var(--border-color);
+  /* padding: 0.75rem 1rem; /* Original padding */
+  padding: 0.875rem 1rem; /* Slightly taller */
+  border-radius: 0.375rem;
+  width: 100%; /* Takes full width of its direct parent div */
+  max-width: 320px; /* Makes the input field itself narrower */
+  margin-left: auto; /* Centers the input if max-width is less than parent div */
+  margin-right: auto; /* Centers the input if max-width is less than parent div */
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.convex-input:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+  outline: none;
+}
