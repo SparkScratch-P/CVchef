@@ -1,5 +1,5 @@
 {
-  "name": "flex-template",
+  "name": "cvchef",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -7,9 +7,12 @@
     "dev": "convex dev --once && node setup.mjs && npm-run-all --parallel dev:frontend dev:backend",
     "dev:frontend": "vite --open",
     "dev:backend": "convex dev",
+    "build": "vite build",
+    "preview": "vite preview",
     "lint": "tsc -p convex -noEmit --pretty false && tsc -p . -noEmit --pretty false && convex dev --once && vite build",
     "predeploy": "vite build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist",
+    "netlify-build": "npm run build"
   },
   "dependencies": {
     "@convex-dev/auth": "^0.0.80",
@@ -51,5 +54,5 @@
     "typescript-eslint": "^8.24.1",
     "vite": "^6.2.0",
     "gh-pages": "^6.0.0"
-  },
+  }
 }
