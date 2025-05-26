@@ -4,13 +4,9 @@
 
 [build.environment]
   NODE_VERSION = "18"
+  VITE_CONVEX_URL = "your-convex-url-here"
 
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
-
-# Environment variables for Convex (add your actual values)
-[build.environment]
-  VITE_CONVEX_URL = "your-convex-url-here"
-  # Add other environment variables as needed
