@@ -1,11 +1,16 @@
 [build]
-  publish = "build"
+  publish = "dist"
   command = "npm run build"
+
+[build.environment]
+  NODE_VERSION = "18"
 
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
 
+# Environment variables for Convex (add your actual values)
 [build.environment]
-  NODE_VERSION = "18"
+  VITE_CONVEX_URL = "your-convex-url-here"
+  # Add other environment variables as needed
