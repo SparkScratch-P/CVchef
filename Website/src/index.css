@@ -1,0 +1,121 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: 'Inter', sans-serif;
+  }
+  
+  /* Loading animation */
+  body:not(.loaded) {
+    overflow: hidden;
+  }
+  
+  body.loaded::before {
+    opacity: 0;
+    visibility: hidden;
+  }
+  
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s ease-out, visibility 0.3s ease-out;
+  }
+}
+
+@layer components {
+  .container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  /* Animation classes */
+  .animate-fade-in {
+    animation: fadeIn 1s ease forwards;
+  }
+
+  .fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease-out;
+  }
+
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .fade-in-left {
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: all 0.6s ease-out;
+  }
+
+  .fade-in-left.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .fade-in-right {
+    opacity: 0;
+    transform: translateX(30px);
+    transition: all 0.6s ease-out;
+  }
+
+  .fade-in-right.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .scale-up {
+    opacity: 0;
+    transform: scale(0.95);
+    transition: all 0.6s ease-out;
+  }
+
+  .scale-up.visible {
+    opacity: 1;
+    transform: scale(1);
+  }
+  
+  /* Interactive hover effects */
+  .hover-lift {
+    transition: transform 0.2s ease-out;
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-5px);
+  }
+
+  .hover-scale {
+    transition: transform 0.2s ease-out;
+  }
+
+  .hover-scale:hover {
+    transform: scale(1.05);
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
