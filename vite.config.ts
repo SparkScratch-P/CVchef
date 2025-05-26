@@ -4,7 +4,8 @@ import path from "path";
 
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: '/CVchef/',
+  // Remove the base path for Netlify - it serves from root
+  // base: '/CVchef/', // Only needed for GitHub Pages
   plugins: [
     react(),
     // The code below enables dev tools like taking screenshots of your site
@@ -17,12 +18,10 @@ export default defineConfig(({ mode }) => ({
             if (id.includes("main.tsx")) {
               return {
                 code: `${code}
-
 /* Added by Vite plugin inject-chef-dev */
 window.addEventListener('message', async (message) => {
   if (message.source !== window.parent) return;
   if (message.data.type !== 'chefPreviewRequest') return;
-
   const worker = await import('https://chef.convex.dev/scripts/worker.bundled.mjs');
   await worker.respondToMessage(message);
 });
@@ -41,4 +40,16 @@ window.addEventListener('message', async (message) => {
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  // Add optimizations for Convex
+  optimizeDeps: {
+    include: ['convex', '@convex-dev/auth']
+  },
+  // Ensure proper build configuration
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: undefined
+      }
+    }
+  }
 }));
